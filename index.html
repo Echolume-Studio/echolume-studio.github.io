@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antonio Garcia — Graphic Designer / Art Director</title>
+<meta name="description" content="Selected work in visual identity, music, film, motion, and digital design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Archivo+Expanded:wght@600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg: #fafafa;
+    --ink: #111111;
+    --ink-soft: #2b2b2a;
+    --gray: #6b6b68;
+    --gray-light: #a3a3a0;
+    --line: #e2e2e0;
+    --line-strong: #cfcfcc;
+    --max: 1240px;
+    --gutter: clamp(1.25rem, 4vw, 4rem);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Archivo', -apple-system, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  a{ color: inherit; }
+  img{ max-width: 100%; display: block; }
+
+  :focus-visible{
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  /* ---------- NAV ---------- */
+
+  header.site-nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250,250,250,0.86);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+  header.site-nav.scrolled{
+    border-bottom-color: var(--line);
+  }
+  .nav-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.15rem;
+    padding-bottom: 1.15rem;
+  }
+  .nav-name{
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+  .nav-links{
+    display: flex;
+    gap: clamp(1.25rem, 3vw, 2.25rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a{
+    text-decoration: none;
+    font-size: 0.85rem;
+    color: var(--gray);
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover{ color: var(--ink); }
+
+  /* ---------- INTRO ---------- */
+
+  .intro{
+    padding-top: clamp(4rem, 12vh, 8rem);
+    padding-bottom: clamp(4rem, 10vh, 7rem);
+    opacity: 0;
+    transform: translateY(14px);
+    animation: rise 0.9s cubic-bezier(.2,.7,.3,1) 0.1s forwards;
+  }
+  @keyframes rise{
+    to{ opacity: 1; transform: translateY(0); }
+  }
+  .intro h1{
+    font-family: 'Archivo Expanded', 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6.2vw, 5rem);
+    line-height: 1.02;
+    margin: 0 0 1.1rem 0;
+    letter-spacing: -0.01em;
+    max-width: 14ch;
+  }
+  .intro .role{
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: var(--gray);
+    margin: 0 0 2.25rem 0;
+  }
+  .intro p.lede{
+    max-width: 42ch;
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ---------- SECTION LABEL ---------- */
+
+  .section-label{
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin: 0 0 3rem 0;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ---------- PROJECT BLOCKS (fade in on scroll) ---------- */
+
+  .project{
+    padding-bottom: clamp(5rem, 12vh, 9rem);
+  }
+  .reveal{
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.8s cubic-bezier(.2,.7,.3,1), transform 0.8s cubic-bezier(.2,.7,.3,1);
+  }
+  .reveal.in{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .project-head{
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .project-num{
+    font-size: 0.9rem;
+    color: var(--gray-light);
+    font-variant-numeric: tabular-nums;
+  }
+  .project-title{
+    font-family: 'Archivo Expanded', 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .project-meta{
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-left: auto;
+    text-align: right;
+  }
+  .project-desc{
+    max-width: 54ch;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    margin: 0 0 2.75rem 0;
+  }
+
+  /* --- Project 01: Spotify — triptych layout --- */
+
+  .triptych{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .cover-art{
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .cover-art svg{ width: 100%; height: 100%; display: block; }
+
+  .support-row{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--gutter);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .support-row .stat-block{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+  }
+  .stat-block div{ border-top: 1px solid var(--line); padding-top: 0.75rem; }
+  .stat-block .num{ font-family:'Archivo Expanded','Archivo',sans-serif; font-weight:700; font-size:1.6rem; display:block; }
+  .stat-block .lbl{ font-size:0.78rem; color: var(--gray); }
+
+  /* --- Project 02: Prometheus — dominant poster layout --- */
+
+  .prometheus-grid{
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--gutter);
+    align-items: start;
+  }
+  .poster-col img{
+    width: 100%;
+    border: 1px solid var(--line);
+  }
+  .side-col{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3rem);
+    padding-top: clamp(1rem, 6vw, 4rem);
+  }
+  .side-block .k{
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin: 0 0 0.75rem 0;
+  }
+  .side-block video, .side-block img{
+    width: 100%;
+    border: 1px solid var(--line);
+  }
+  .side-block p{
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    max-width: 46ch;
+    margin: 0.75rem 0 0 0;
+  }
+
+  .prom-detail-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gutter);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+  .prom-detail-row img{ border: 1px solid var(--line); }
+  .caption{
+    font-size: 0.78rem;
+    color: var(--gray);
+    margin-top: 0.6rem;
+  }
+
+  /* ---------- FUTURE WORK ---------- */
+
+  .future{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .future p{
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin: 0;
+    max-width: 40ch;
+  }
+
+  /* ---------- ABOUT ---------- */
+
+  .about{
+    padding-top: clamp(5rem, 10vh, 8rem);
+    padding-bottom: clamp(4rem, 8vh, 6rem);
+  }
+  .about-grid{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--gutter);
+  }
+  .about p.intro-text{
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    line-height: 1.4;
+    max-width: 32ch;
+    margin: 0;
+  }
+  .skills{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .skills li{
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    color: var(--ink-soft);
+  }
+  .skills li:last-child{ border-bottom: 1px solid var(--line); }
+  .skills li span.n{ color: var(--gray-light); font-size: 0.8rem; }
+
+  /* ---------- CONTACT ---------- */
+
+  .contact{
+    padding-top: clamp(3rem, 8vh, 5rem);
+    padding-bottom: clamp(4rem, 8vh, 6rem);
+    border-top: 1px solid var(--line);
+  }
+  .contact h2{
+    font-family: 'Archivo Expanded', 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 5vw, 3.4rem);
+    line-height: 1.06;
+    margin: 0 0 2rem 0;
+    letter-spacing: -0.01em;
+  }
+  .contact-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .contact-email{
+    font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 0.15rem;
+    transition: opacity 0.2s ease;
+  }
+  .contact-email:hover{ opacity: 0.6; }
+  .contact-links{
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+  }
+  .contact-links a{ text-decoration: none; }
+  .contact-links a:hover{ color: var(--ink); }
+
+  /* ---------- FOOTER ---------- */
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 1.75rem 0 2.5rem 0;
+  }
+  .footer-row{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--gray);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+
+  @media (max-width: 860px){
+    .prometheus-grid{ grid-template-columns: 1fr; }
+    .side-col{ padding-top: 0; }
+    .support-row{ grid-template-columns: 1fr; }
+    .about-grid{ grid-template-columns: 1fr; gap: 2.5rem; }
+    .prom-detail-row{ grid-template-columns: 1fr; }
+  }
+  @media (max-width: 620px){
+    .triptych{ grid-template-columns: 1fr; }
+    .cover{ aspect-ratio: 16/10; }
+    .nav-links{ gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav" id="siteNav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-name">Antonio Garcia</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- INTRO -->
+  <section class="wrap intro">
+    <h1>Antonio Garcia</h1>
+    <p class="role">Graphic Designer / Art Director</p>
+    <p class="lede">Selected work in visual identity, music, film, motion, and digital design.</p>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section class="wrap" id="work">
+    <p class="section-label">Selected Work</p>
+
+    <!-- PROJECT 01 — SPOTIFY -->
+    <div class="project reveal">
+      <div class="project-head">
+        <span class="project-num">01</span>
+        <h3 class="project-title">Spotify / Playlist</h3>
+        <span class="project-meta">Art Direction<br>Graphic Design / Motion</span>
+      </div>
+      <p class="project-desc">A conceptual music campaign exploring the visual identity of a curated Spotify playlist, built as three genre-distinct cover treatments unified by one design system.</p>
+
+      <div class="triptych">
+        <div class="cover-art">
+          <svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hip Hop Hits playlist cover, chrome lettering on a fogged dark background">
+            <defs>
+              <radialGradient id="fogbg" cx="50%" cy="35%" r="75%">
+                <stop offset="0%" stop-color="#3a3f47"/>
+                <stop offset="55%" stop-color="#22262c"/>
+                <stop offset="100%" stop-color="#131518"/>
+              </radialGradient>
+              <linearGradient id="chrome" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="22%" stop-color="#9aa0a8"/>
+                <stop offset="45%" stop-color="#ffffff"/>
+                <stop offset="60%" stop-color="#6b7076"/>
+                <stop offset="80%" stop-color="#e8ebee"/>
+                <stop offset="100%" stop-color="#7d8288"/>
+              </linearGradient>
+              <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.03 0"/><feComposite operator="over" in2="SourceGraphic"/></filter>
+              <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
+            </defs>
+            <rect width="700" height="700" fill="url(#fogbg)"/>
+            <circle cx="180" cy="560" r="180" fill="#4a5460" opacity="0.35" filter="url(#soft)"/>
+            <circle cx="560" cy="150" r="160" fill="#565f6a" opacity="0.3" filter="url(#soft)"/>
+            <rect width="700" height="700" filter="url(#grain)"/>
+            <text x="350" y="300" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="92" fill="url(#chrome)" stroke="#0f1114" stroke-width="2">HIP HOP</text>
+            <text x="350" y="390" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="92" fill="url(#chrome)" stroke="#0f1114" stroke-width="2">HITS</text>
+            <text x="350" y="640" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" letter-spacing="6" fill="#c7cbd0">TOP PLAYLIST</text>
+          </svg>
+        </div>
+        <div class="cover-art">
+          <svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hard Rock playlist cover, vintage newsprint wordmark on paper texture">
+            <defs>
+              <filter id="paper"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/></filter>
+            </defs>
+            <rect width="700" height="700" fill="#f2f1ec"/>
+            <rect width="700" height="700" fill="none" filter="url(#paper)"/>
+            <line x1="60" y1="220" x2="640" y2="220" stroke="#111" stroke-width="2"/>
+            <text x="60" y="180" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="96" letter-spacing="-2" fill="#111">HARD</text>
+            <text x="335" y="180" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-style="italic" font-size="96" fill="#111">ROCK</text>
+            <text x="60" y="640" font-family="Georgia, serif" font-size="20" letter-spacing="4" fill="#3a3a38">ESTABLISHED PLAYLIST - VOL. 01</text>
+          </svg>
+        </div>
+        <div class="cover-art">
+          <svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reggaeton playlist cover, neon outline lettering on a dark gradient background">
+            <defs>
+              <radialGradient id="rgbg" cx="50%" cy="60%" r="80%">
+                <stop offset="0%" stop-color="#1c1230"/>
+                <stop offset="60%" stop-color="#130d22"/>
+                <stop offset="100%" stop-color="#0b0714"/>
+              </radialGradient>
+              <filter id="neonglow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7" result="blur1"/><feMerge><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <filter id="soft2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="20"/></filter>
+            </defs>
+            <rect width="700" height="700" fill="url(#rgbg)"/>
+            <circle cx="120" cy="150" r="200" fill="#e0336b" opacity="0.28" filter="url(#soft2)"/>
+            <circle cx="580" cy="560" r="220" fill="#2f6fe0" opacity="0.28" filter="url(#soft2)"/>
+            <g filter="url(#neonglow)">
+              <text x="350" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="78" fill="none" stroke="#7fd9ff" stroke-width="2.5" letter-spacing="2">REGGAETON</text>
+              <line x1="120" y1="365" x2="580" y2="365" stroke="#7fd9ff" stroke-width="2.5"/>
+            </g>
+            <text x="350" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-weight="600" font-size="30" letter-spacing="10" fill="#f4f4f6">TOP HITS</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="support-row">
+        <div class="stat-block">
+          <div><span class="num">3</span><span class="lbl">Genre-Specific Covers</span></div>
+          <div><span class="num">1:1</span><span class="lbl">Format, Built for CD / Case Packaging</span></div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+
+    <!-- PROJECT 02 — PROMETHEUS -->
+    <div class="project reveal">
+      <div class="project-head">
+        <span class="project-num">02</span>
+        <h3 class="project-title">Prometheus</h3>
+        <span class="project-meta">Film / Art Direction<br>Graphic Design / Motion</span>
+      </div>
+      <p class="project-desc">A self-initiated cinematic motion design package reimagining Ridley Scott's Prometheus — a custom key art poster, animated title treatment, and supporting visual language. Unofficial concept work, not affiliated with or endorsed by the studio.</p>
+
+      <div class="prometheus-grid">
+        <div class="poster-col">
+          <img src="assets/prometheus-poster.jpg" alt="Prometheus key art poster — original composition, silhouette figure against a radiant dome against a starfield.">
+          <p class="caption">Key art poster — print / digital</p>
+        </div>
+        <div class="side-col">
+          <div class="side-block">
+            <p class="k">Animated Sequence</p>
+            <video src="assets/prometheus-motion.mp4" poster="assets/prometheus-motion-poster.jpg" muted loop playsinline autoplay></video>
+            <p>Looping motion treatment with glyph transitions and radial light — built for theatrical digital displays and social platforms.</p>
+          </div>
+          <div class="side-block">
+            <p class="k">Title Card</p>
+            <img src="assets/prometheus-intro.jpg" alt="Prometheus project title card on a starfield background.">
+            <p>Campaign rollout continues with a social application and an opening title sequence, extending the key art's typography and light language across formats.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FUTURE WORK -->
+    <div class="future reveal">
+      <span class="project-num">03</span>
+      <p>Additional projects in visual identity and motion are currently in development.</p>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section class="wrap about" id="about">
+    <div class="about-grid">
+      <p class="intro-text">Antonio is a multidisciplinary graphic designer and art director based in the Washington, D.C. area, working across brand identity, motion graphics, and entertainment design. He is the founder of Echolume, an independent studio focused on music, film, and entertainment branding.</p>
+      <ul class="skills">
+        <li>Graphic Design <span class="n">01</span></li>
+        <li>Art Direction <span class="n">02</span></li>
+        <li>Motion Design <span class="n">03</span></li>
+        <li>Brand / Campaign Design <span class="n">04</span></li>
+        <li>Digital Design <span class="n">05</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="wrap contact" id="contact">
+    <h2>Let's make something<br>worth looking at.</h2>
+    <div class="contact-row">
+      <a class="contact-email" href="mailto:studio@echo-lume.com">studio@echo-lume.com</a>
+      <div class="contact-links">
+        <a href="https://echolume-studio.github.io" target="_blank" rel="noopener">Echolume</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>Antonio Garcia — Graphic Designer</span>
+    <span>&copy; 2026</span>
+  </div>
+</footer>
+
+<script>
+  // sticky nav border on scroll
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
+
+  // reveal-on-scroll for project blocks
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
